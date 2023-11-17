@@ -1,0 +1,22 @@
+/*========Creating Instance=========*/
+
+
+provider "aws" { # Keyword
+  region = "us-east-1"  # Change this to your desired region
+}
+
+resource "aws_instance" "example" { # Keyword
+  ami           = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 AMI (replace with your preferred AMI)
+  instance_type = "t2.micro"               # Instance type
+  subnet_id     = "subnet-0123456789abcdef0"  # Replace with your subnet ID
+
+  tags = {Name = "example-instance"}
+}
+
+
+
+
+
+
+
+
