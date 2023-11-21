@@ -1,0 +1,60 @@
+/*==== S3 Bucket ======*/
+
+provider "aws" {
+region = "ap-south-1"
+}
+
+resource "aws_instance"  "instance-1" {
+        ami             =  "ami-0287a05f0ef0e9d9a"
+        instance_type   = "t2.micro"
+        tags            = {Name = "webserver1"}
+}
+
+resource "aws_s3_bucket" "bucket1" {
+        bucket = "awsbatch701"
+        acl    = "private"
+versioning {
+        enabled = true
+}
+}
+
+
+/*==== Elastic IP Address ======*/
+
+resource "aws_eip" "ip" {
+        instance = "${aws_instance.instance-1.id}"
+}
+
+/*==== Identity and Access Management ======*/
+
+resource "aws_iam_user" "example" {
+        count = 3
+        name = "sudha.${count.index}"
+}
+
+/*==== EBS Volume ======*/
+
+resource "aws_ebs_volume" "myvol" {
+        availability_zone = "ap-south-1b"
+        size              = 2
+        tags = {Name = "MyVolume"}
+}
+
+resource "aws_volume_attachment" "ebs_att" {
+        device_name = "/dev/sdf"
+        volume_id   = aws_ebs_volume.myvol.id
+        instance_id = aws_instance.instance-1.id
+}
+
+
+/*==== Simple Notification Service ======*/
+
+resource "aws_sns_topic" "my_sns" {
+  name = "MySns"
+}
+
+resource "aws_sns_topic_subscription" "user_email1" {
+  topic_arn = aws_sns_topic.my_sns.arn
+  protocol  = "email"
+  endpoint  = "sspradhan8055@gmail.com"
+}
