@@ -51,7 +51,8 @@ git branch sudha (Create the branch)
 git checkout sudha (To change the branch) (last commit of master become the first commit of feature branch)
 git push origin sudha (Push the branch to the GitHub)
 git branch -m oldname newname (Change the Branch name)
-
+Git merge Branch(Name) : Merger the branch.
+Git log --oneline --graph : (To check all log at oneline with graph.
 
 How edit github.com repository link from system 
 #git config --edit 
