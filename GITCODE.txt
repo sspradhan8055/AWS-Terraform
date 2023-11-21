@@ -1,0 +1,68 @@
+GIT Installation In Ubuntu 
+
+#apt-get update  # apt install git-all  # git –version  
+Git operation 
+
+# mkdir project1 
+# cd project1 # git init ( to initialising) 
+# git remote add origin "https://github.com/depak-sai-git/demo.git"
+# git config --global user.name "deepak-sai-git" # git config --global user.email "deepak.amie.it@gmail.com" 
+# git config --list 
+
+touch test1.txt test2.txt test3.txt #Creating the file
+Git status #To check the file status
+Git add . #To add the file to current directory
+git commit -m "my first file" #currect directory to Local Directory, this changes done in local repo only
+Git push origin master #Push the file form Local directory to Central Directory, 
+
+￼
+Auto Credential 
+
+$ git config credential.helper store $ git push https://github.com/owner/repo.git 
+Username for 'https://github.com': <USERNAME> Password for 'https://USERNAME@github.com': <PASSWORD> 
+using this we need not give user name and password every time 
+
+
+
+Delete Operation 
+# rm -f filename – remove from current directory 
+# git rm --cached filename (remove the file from the local repo but not delete it from the current directory) 
+# git rm filename (removes the file from the repo but also deletes it from the local file system) 
+
+
+
+Git tag 
+# git tag <tagname> 
+#git tag #To check the tag name
+# git push origin version1 
+# git push --tags ( to push all tags) 
+Go to the GitHub then open Tags > Copy link address the tag.gz then open other server > wget paste the link > unzip the file (tar -xvf) > then you can see the version1 tag file.
+
+Delete Tag 
+git tag -d version1 (delete the tag from local)
+git push origin -d version1 (delete tag in remote github )
+
+
+
+Git operation in branching 
+
+git branch (check the branch)
+git branch sudha (Create the branch)
+git checkout sudha (To change the branch) (last commit of master become the first commit of feature branch)
+git push origin sudha (Push the branch to the GitHub)
+git branch -m oldname newname (Change the Branch name)
+
+
+How edit github.com repository link from system 
+#git config --edit 
+How to remove github.com repository link from system 
+# git config --list # git remote remove origin 
+# git config --list 
+
+
+Cloning 
+git clone "https://github.com/depakkumarrts/demo.git 
+
+
+Pulling 
+#git pull origin master
